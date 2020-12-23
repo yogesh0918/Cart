@@ -1,0 +1,25 @@
+{% extends 'shop/basic.html' %}
+{% block title %} About{% endblock %}
+{% block body %}
+<h2><b>Welcome to MyCart</b></h2> 
+The MyCart is a <B>Indian Website</B> that started As a small E-business,which provides A Digital platform
+for local shops & vendors.With this website customers can easily get delivery through their local grocery shops
+{% block js %} 
+<script>
+    if (localStorage.getItem('cart') == null){
+        var cart ={};
+    }
+    else{
+        cart= JSON.parse(localStorage.getItem('cart'));
+    }
+    console.log(cart);
+    var sum=0;
+    for(item in cart){
+        let name=cart[item][1];
+        let Qty=cart[item][0];
+        sum =sum+Qty;
+    }
+    document.getElementById('cart').innerHTML=sum;
+</script>
+{% endblock %} 
+{% endblock %}
